@@ -28,7 +28,10 @@ window.onload = function() {
       for (let v = 0; v < values.length; v++) {
         const value = values[v];
         const suit = suits[s];
-        cards.push({ value, suit });
+        cards.push({
+          value,
+          suit
+        });
       }
     }
     return cards;
@@ -58,19 +61,22 @@ window.onload = function() {
       "</span>";
     document.body.appendChild(card);
     //Tried looping the cards couldnt find a solution!
-    // setTimeout(() => {
-    //   for (i = 0; i < 10; i++) {
-    //     document
-    //       .querySelector(".card")
-    //       .classList.remove(cardSuit.toLowerCase());
-    //     document.querySelector(".card").classList.add(cardSuit.toLowerCase());
-    //   }
-    // }, 1000);
+    //   setTimeout(() => {
+    //     for (let i = 0; i < 10; i++) {
+    //       document
+    //         .querySelector(".card")
+    //         .classList.remove(cardSuit.toLowerCase());
+    //       document.querySelector(".card").classList.add(cardSuit.toLowerCase());
+    //     }
+    //   }, 1000);
   }
+
   const cards = deckBuilder();
   randomCard(cards);
-  //Tried adding a button to change card suit :(
-  // document
-  //   .querySelector("#button1")
-  //   .addEventListener("click", randomCard(cards));
+  //Button Functionality
+  document.querySelector("#button1").addEventListener("click", () => {
+    let div = document.querySelector(".card");
+    div.remove();
+    randomCard(cards);
+  });
 };
